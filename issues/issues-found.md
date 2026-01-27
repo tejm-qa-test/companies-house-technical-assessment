@@ -195,28 +195,30 @@ P4
 
 ---
 
-## DEF-06: Authentication bypass on customer login (any credentials accepted)
+## DEF-06: Weak authentication – common credential pair (`admin` / `admin`) allows successful login
 
 ### Environment
 - Site: https://www.demoblaze.com/index.html
-- Area: Customer login modal ("Log in" in top navigation)
+- Area: Customer login modal (“Log in” in top navigation)
 - Browser(s): Chrome, Safari
 - OS: macOS
 
 ### Steps to Reproduce
 1. Navigate to the homepage
 2. Click **Log in** in the top navigation
-3. Enter arbitrary credentials (e.g. Username: `Qwerty`, Password: `1234`)
-4. Click **Log in** on the modal
+3. Enter the following credentials:
+   - Username: `admin`
+   - Password: `admin`
+4. Click **Log in**
 
 ### Expected Result
-- Login should validate credentials against an existing registered user
+- Login should validate credentials against a securely managed user account
+- Highly guessable or weak credential pairs should not authenticate
 - Invalid credentials should be rejected with a clear error message
-- Only registered users with correct passwords should be able to authenticate
 
 ### Actual Result
-- User appears to be logged in using arbitrary credentials
-- No validation appears to occur (login succeeds regardless of username/password)
+- Login succeeds using the highly guessable credential pair `admin` / `admin`
+- The application transitions to a logged-in state (e.g. “Welcome admin” is displayed)
 
 ### Severity
 High
@@ -225,13 +227,15 @@ High
 P1
 
 ### Impact
-- Authentication controls are ineffective, allowing unauthorised access to an authenticated state
-- Users can impersonate other usernames without knowing a password
-- Loss of trust and potential security/privacy implications depending on post-login functionality
+- Highly guessable credentials allow unauthorised access to an authenticated user session
+- Increases risk of account compromise through credential stuffing or brute-force attacks
+- Undermines trust in the application’s authentication controls
 
 ### Notes / Evidence
-- Reproduced using multiple credential combinations (e.g. `admin` / `admin`, `Qwerty` / `1234`)
-- No dedicated admin area exists; this issue relates solely to customer authentication
+- Reproduced consistently using the credential pair `admin` / `admin`
+- No evidence of role-based access; appears to be a customer account rather than a dedicated admin area
+- Issue relates specifically to customer authentication security
+
 
 
 ---
