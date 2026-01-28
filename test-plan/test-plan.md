@@ -1,26 +1,22 @@
 # Test Plan – Companies House Technical Assessment
 
 ## 1. Introduction
-This test plan outlines the functional testing and automation strategy for the Companies House Senior Test Engineer technical assessment. The objective is to demonstrate a structured, risk-based approach to quality assurance, including test planning, prioritisation, exploratory testing, targeted automation, and defect identification.
+This test plan outlines the functional testing and automation approach used for the Companies House Senior Test Engineer technical assessment. The aim is to demonstrate a practical, risk-based approach to quality assurance, covering exploratory testing, prioritisation, targeted automation, and defect identification.
 
-Testing is performed against the demo website:
+Testing was carried out against the demo website:
 https://www.demoblaze.com/index.html  
-This site represents a sample e-commerce application. The plan prioritises high-value functional areas that impact business operations, user experience, and system reliability.
+The site represents a simple e-commerce application with dynamic UI behaviour. Testing focuses on functional areas that directly affect users and core system behaviour.
 
 ---
 
 ## 2. Testing Objectives
 Primary objectives:
-- Validate core business-critical user journeys
-- Ensure key functional flows behave as expected
-- Identify defects impacting usability, reliability, and business value
-- Reduce risk in high-impact system areas
-- Demonstrate a structured and professional testing approach
-
-Secondary objectives:
-- Demonstrate clear test reasoning and prioritisation
-- Produce maintainable, understandable automated tests
-- Provide clear documentation of test coverage and issues found
+- Confirm core, business-critical user journeys
+- Ensure functional flows behave as expected
+- Identify defects affecting reliability, usability, and confidence
+- Reduce risk in high-impact areas
+- Provide clear documentation of coverage and issues found
+- Produce maintainable and understandable automated tests
 
 ---
 
@@ -33,25 +29,25 @@ Secondary objectives:
 - User authentication (login/logout)
 - Product browsing and navigation
 - Product detail viewing
-- Add to cart functionality
+- Add-to-cart functionality
 - Checkout and order placement
 
 **Regression-Style Testing**
-- Core automated tests are designed to act as a regression-style safety net
-- In the context of this assessment, regression testing is demonstrated conceptually through automated coverage of critical user journeys
-- The demo website is static; however, the tests illustrate how regression protection would be implemented in a live environment
+- Automated tests are designed to act as a regression-style safety net for core journeys
+- In this assessment, regression is demonstrated conceptually through stable, repeatable automated scenarios
+- The demo site is static, but the tests illustrate how regression protection would be applied in a live environment
 
 **Exploratory Testing**
-- Manual exploratory testing to identify defects, inconsistencies, and edge cases
-- Investigation of unexpected behaviour and usability issues
+- Manual exploratory testing to uncover defects, inconsistencies, and edge cases
+- Investigation of unexpected behaviour observed during normal user flows
 
 **Smoke Testing**
-- Basic validation that the application is accessible and key features are available
+- Lightweight checks to confirm the application loads and core functionality is available
 
 ### 3.2 Out-of-Scope Testing Areas
 The following areas are intentionally excluded due to assessment scope and time constraints:
 - Performance, load, and stress testing
-- Security testing
+- Security and penetration testing
 - Accessibility testing
 - Visual regression testing
 - API and backend integration testing
@@ -66,25 +62,25 @@ Testing effort is prioritised based on business impact, user impact, and likelih
 - Direct impact on user access and trust
 
 **Add to Cart**
-- Core transactional functionality
-- Direct revenue impact
+- Core transactional behaviour
+- Direct impact on conversion
 
 **Checkout / Order Placement**
-- Business-critical flow
+- End-to-end transactional flow
 - High financial and reputational risk if broken
 
 ### 4.2 Medium-Risk Areas
 **Product Browsing & Navigation**
-- Affects product discovery and user experience
+- Affects product discovery and overall usability
 
 **Cart Management**
-- Impacts conversion and usability
+- Impacts conversion and user confidence
 
 ### 4.3 Low-Risk Areas
 **UI Presentation and Styling**
-- Visual issues without functional impact
+- Visual inconsistencies without functional impact
 
-**Non-critical Navigation Links**
+**Non-critical Navigation**
 - Informational or non-transactional flows
 
 ---
@@ -92,37 +88,37 @@ Testing effort is prioritised based on business impact, user impact, and likelih
 ## 5. Test Approach
 
 ### 5.1 Manual & Exploratory Testing
-Initial manual and exploratory testing is used to:
-- Understand application behaviour
-- Validate core journeys
+Manual and exploratory testing was performed first to:
+- Understand real application behaviour
+- Validate core user journeys
 - Identify defects and unstable areas
-- Inform automation decisions
+- Inform which scenarios were suitable for automation
 
-Findings from exploratory testing are documented and used to prioritise automation effort.
+Findings from this phase directly influenced automation scope and defect reporting.
 
 ### 5.2 Automation Approach
 Automation is applied selectively to:
 - High-value, business-critical journeys
-- Stable, repeatable scenarios
+- Stable and repeatable scenarios
 - Core regression-style flows
 
-Automation is used to build confidence and reduce risk rather than achieve exhaustive coverage.
+Automation is used to build confidence in key behaviour rather than provide broad or exhaustive coverage.
 
 ### 5.3 Structure-Based Testing
-The application is logically divided into functional areas:
+For clarity and traceability, the application is divided into functional areas:
 - Authentication
-- Product Catalogue
-- Product Detail Pages
+- Product catalogue
+- Product detail pages
 - Cart
 - Checkout
 - Navigation
 
-This supports clear coverage mapping, organisation, and traceability.
+This mirrors real-world QA practices and supports clear coverage mapping.
 
 ### 5.4 Testing Philosophy
 - Risk reduction over test quantity
 - Business value over technical complexity
-- Confidence-building over coverage metrics
+- Confidence over coverage metrics
 - Maintainability and clarity over speed
 
 ---
@@ -130,7 +126,7 @@ This supports clear coverage mapping, organisation, and traceability.
 ## 6. Automation Strategy
 
 ### 6.1 Automation Objectives
-- Validate business-critical user journeys
+- Validate core user journeys
 - Provide fast, repeatable feedback
 - Reduce risk in high-impact areas
 - Demonstrate a maintainable automation approach
@@ -139,7 +135,7 @@ This supports clear coverage mapping, organisation, and traceability.
 Tests are selected based on:
 - Business criticality
 - User impact
-- Stability
+- Functional stability
 - Repeatability
 - Regression value
 - Low flakiness risk
@@ -148,9 +144,9 @@ Tests are selected based on:
 Automated coverage includes:
 - User registration (sign-up)
 - User authentication (login)
-- Homepage availability and catalogue render (sanity/smoke check)
-- Add to cart
-- Checkout / order placement
+- Homepage availability and catalogue render (sanity check)
+- Add-to-cart behaviour
+- Checkout and order placement
 
 Excluded from automation:
 - Visual styling and layout checks
@@ -160,16 +156,16 @@ Excluded from automation:
 ### 6.4 Automation Tooling
 **Playwright** is used for UI automation due to:
 - Cross-browser support
-- Reliable handling of asynchronous behaviour
+- Strong handling of asynchronous UI behaviour
 - Fast execution
-- Clear selector strategies
-- Strong reporting and documentation
+- Reliable selector strategies
+- Built-in reporting and diagnostics
 
 ### 6.5 Automation Design Principles
-- Readability over complexity
-- Stability over coverage
-- Clear intent per test
-- Independent, maintainable tests
+- Readable tests with clear intent
+- Stability over breadth
+- Independent execution
+- Low maintenance overhead
 
 ---
 
@@ -180,7 +176,7 @@ Excluded from automation:
 - **GitHub** – Version control and repository hosting
 - **Markdown (.md)** – Test documentation and defect reporting
 
-Issues are documented in a structured format mirroring real-world defect tracking systems.
+Defects are documented using a structured format aligned with real-world tracking tools (e.g. Jira or Azure DevOps).
 
 ---
 
@@ -192,7 +188,7 @@ Testing is executed using mainstream browser engines:
 - **Mozilla Firefox**
 - **WebKit (Safari equivalent)**
 
-These provide broad market coverage. Niche browsers are excluded to maintain focus.
+These engines provide broad coverage of real-world user behaviour. Niche browsers are excluded to maintain focus but some are covered due to being Chromium based (Brave, Zen)
 
 ### 8.2 Environment Assumptions & Constraints
 - Public shared demo environment
@@ -200,7 +196,7 @@ These provide broad market coverage. Niche browsers are excluded to maintain foc
 - No environment reset capability
 - No guaranteed test data isolation
 
-Test design accounts for these constraints to minimise flakiness.
+Tests are designed with these constraints in mind to minimise flakiness.
 
 ---
 
@@ -223,8 +219,8 @@ Test design accounts for these constraints to minimise flakiness.
 
 ## 10. Assumptions & Constraints
 - No formal requirements or wireframes provided
-- User journeys inferred from application behaviour
+- User journeys inferred from observed application behaviour
 - UI-level testing sufficient for assessment goals
 - Observed defects considered valid for reporting
 
-Testing decisions are made with these assumptions in mind to ensure realistic, maintainable outcomes.
+Testing decisions are made with these assumptions in mind to ensure realistic and maintainable outcomes.

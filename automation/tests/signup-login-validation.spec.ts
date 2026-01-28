@@ -22,16 +22,16 @@ test('Sign up + Log in validation: user can register and authenticate', async ({
   const signupMsg = signupDialog.message();
   await signupDialog.accept();
 
-  // Expect a success-ish message. (Keep it tolerant; demo sites vary slightly)
+  // Expect a success-ish message.
   expect(signupMsg.length).toBeGreaterThan(0);
 
- // Dismiss the sign up modal (Escape is more reliable than clicking Close due to animations)
+ // Dismiss the sign up modal
 await page.keyboard.press('Escape');
 await expect(page.locator('#signInModal')).toBeHidden({ timeout: 10000 });
 expect(signupMsg).toMatch(/Sign up successful|This user already exist/i);
 
 
-  // --- Log in ---
+  // Log In
   await page.getByRole('link', { name: 'Log in' }).click();
   await expect(page.locator('#logInModal')).toBeVisible();
 

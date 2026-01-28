@@ -7,7 +7,7 @@ test('Checkout validation: user can place an order with valid details', async ({
   // 2) Open first product
   await page.locator('#tbodyid .card a').first().click();
 
-  // Capture product title (useful for debug / confidence)
+  // Capture product title
   const titleText = (await page.locator('#tbodyid h2').textContent())?.trim();
   expect(titleText).toBeTruthy();
 
@@ -22,7 +22,7 @@ test('Checkout validation: user can place an order with valid details', async ({
   // 4) Go to Cart
   await page.locator('#cartur').click();
 
-  // Wait for cart to show the product title (can be async)
+  // Wait for cart to show the product title
   await expect(page.locator('#tbodyid')).toContainText(titleText!, { timeout: 15000 });
 
   // 5) Place Order
@@ -32,7 +32,7 @@ test('Checkout validation: user can place an order with valid details', async ({
   const orderModal = page.locator('#orderModal');
   await expect(orderModal).toBeVisible();
 
-  // 6) Fill in order form (happy path data)
+  // 6) Fill in order form
   await page.locator('#name').fill('Thomas Mellon');
   await page.locator('#country').fill('United Kingdom');
   await page.locator('#city').fill('London');
@@ -49,10 +49,10 @@ test('Checkout validation: user can place an order with valid details', async ({
 
   await expect(success).toContainText('Thank you for your purchase!');
 
-  // Confirm an Order ID exists (the modal contains "Id:" text)
+  // Confirm an Order ID exists
   await expect(success).toContainText('Id:', { timeout: 10000 });
 
-  // Close success dialog (keeps test tidy)
+  // Close success dialog
   await page.getByRole('button', { name: 'OK' }).click();
 
   // Ensure success modal disappears

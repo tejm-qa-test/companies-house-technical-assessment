@@ -18,7 +18,7 @@ test('User can add a product to the cart', async ({ page }) => {
   expect(dialog.message()).toContain('Product added');
   await dialog.accept();
 
-  // Navigate to cart via the UI (more realistic than direct goto)
+  // Navigate to cart via the UI
   await page.locator('#cartur').click();
 
   // Wait for cart row containing the product title
